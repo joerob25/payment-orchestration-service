@@ -1,3 +1,4 @@
 // Pure domain model — no framework dependencies allowed.
 dependencies {
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

@@ -1,6 +1,16 @@
+server:
+  port: 18001
+
 spring:
   application:
     name: payment-orchestration-service
+  threads:
+    virtual:
+      enabled: true
+
+logging:
+  pattern:
+    level: "%5p [%X{traceId},%X{spanId}]"
 
 management:
   endpoints:
@@ -13,3 +23,6 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
+  tracing:
+    sampling:
+      probability: 1.0
