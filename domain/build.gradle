@@ -1,0 +1,3 @@
+// Pure domain model — no framework dependencies allowed.
+dependencies {
+}

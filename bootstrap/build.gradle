@@ -1,0 +1,37 @@
+plugins {
+    id 'org.springframework.boot'
+}
+
+tasks.named('bootRun') {
+    workingDir = rootProject.projectDir
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation project(':application')
+    implementation project(':adapter:in:rest')
+    implementation project(':adapter:in:messaging')
+    implementation project(':adapter:out:persistence')
+    implementation project(':adapter:out:messaging')
+
+    // Observability
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-micrometer-tracing-brave'
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+
+    // Dev
+    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    testImplementation 'org.testcontainers:testcontainers-junit-jupiter'
+    testImplementation 'org.testcontainers:testcontainers-kafka'
+    testImplementation 'org.testcontainers:testcontainers-postgresql'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-kafka-test'
+    testImplementation 'org.springframework.boot:spring-boot-micrometer-tracing-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-actuator-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-flyway-test'
+}

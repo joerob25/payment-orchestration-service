@@ -1,0 +1,9 @@
+rootProject.name = 'payment-orchestration-service'
+
+include ':domain'
+include ':application'
+include ':adapter:in:rest'
+include ':adapter:in:messaging'
+include ':adapter:out:persistence'
+include ':adapter:out:messaging'
+include ':bootstrap'
